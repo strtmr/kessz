@@ -1,2 +1,5 @@
 # Legacy app: local reference only, never committed
 zzz_legacy/
+
+# Research notes about the legacy site, including its security findings: local only
+docs/research/
