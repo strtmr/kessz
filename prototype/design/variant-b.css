@@ -1,0 +1,136 @@
+/* PROTOTYPE — throwaway. Variant B "Samt": dark, rail navigation. Fonts: system serif/sans
+ * (production idea: self-host "Fraunces" for headings). */
+.v-b {
+  --bg: #1f1e21; --bg2: #2a292d; --line: #3b3a40; --silver: #c7c8cd; --dim: #8e8f96; --violet: #9b7fd1; --violet-d: #5b3f8c; --text: #e9e9ec;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans);
+}
+.v-b a { text-decoration: none; }
+.v-b h1, .v-b h2 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.1; }
+
+.b-shell { display: grid; min-height: 100vh; }
+@media (min-width: 900px) { .b-shell { grid-template-columns: 250px 1fr; } }
+
+.b-rail { position: sticky; top: 0; z-index: 5; background: #18171a; border-bottom: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 10px 16px; }
+.b-logo { color: var(--silver); }
+.b-logo .kessz-logo { width: 84px; height: auto; }
+.b-menu > summary { list-style: none; cursor: pointer; border: 1px solid var(--line); padding: 6px 14px; color: var(--silver); font-size: .9rem; }
+.b-menu > summary::-webkit-details-marker { display: none; }
+.b-menu[open] > summary { border-color: var(--violet); color: var(--violet); }
+.b-menu nav { position: absolute; left: 0; right: 0; top: 100%; background: #18171a; border-bottom: 1px solid var(--line); padding: 8px 16px 18px; max-height: 75vh; overflow: auto; }
+.b-tree, .b-more, .b-tree ul { list-style: none; margin: 0; padding: 0; }
+.b-tree > li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.b-tree > li > a { font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
+.b-tree > li > a[aria-current] { color: var(--violet); }
+.b-tree ul { padding: 4px 0 0 12px; }
+.b-tree ul a { color: var(--dim); font-size: .88rem; }
+.b-tree a:hover, .b-more a:hover { color: var(--violet); }
+.b-more { margin-top: 14px; display: grid; gap: 6px; font-size: .92rem; color: var(--silver); }
+.b-legal { display: none; }
+@media (min-width: 900px) {
+  .b-rail { height: 100vh; flex-direction: column; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; padding: 28px 24px; border: 0; border-right: 1px solid var(--line); overflow-y: auto; }
+  .b-logo .kessz-logo { width: 130px; margin-bottom: 30px; }
+  .b-menu > summary { display: none; }
+  .b-menu nav { position: static; padding: 0; border: 0; max-height: none; background: none; }
+  .b-legal { display: grid; gap: 2px; margin-top: auto; padding-top: 24px; font-size: .75rem; color: var(--dim); }
+  .b-legal a:hover { color: var(--silver); }
+}
+
+.b-main { min-width: 0; padding: 0 16px 40px; }
+@media (min-width: 900px) { .b-main { padding: 0 40px 60px; } }
+.b-kicker { color: var(--violet); letter-spacing: .3em; text-transform: uppercase; font-size: .72rem; margin: 0 0 10px; }
+
+.b-hero { display: grid; gap: 24px; align-items: center; padding: 36px 0; }
+.b-hero h1 { font-size: clamp(2.8rem, 10vw, 5.2rem); color: var(--silver); }
+.b-hero h1 span { color: var(--violet); }
+.b-hero-text > p:last-child { color: var(--dim); margin-top: 18px; }
+.b-hero-img img { width: 100%; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; margin: 0 auto;
+  box-shadow: 0 0 0 1px var(--line), 0 0 80px rgba(155,127,209,.25); }
+@media (min-width: 900px) { .b-hero { grid-template-columns: 1.2fr 1fr; padding: 70px 0 50px; } }
+
+.b-block { padding: 30px 0; }
+.b-h2 { font-size: 1.6rem; color: var(--silver); margin-bottom: 18px; }
+.b-h2 span { color: var(--violet); }
+.b-mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.b-mosaic .is-big { grid-column: span 2; }
+@media (min-width: 700px) { .b-mosaic { grid-template-columns: repeat(4, 1fr); } .b-mosaic .is-big { grid-row: span 2; } }
+.b-tile { position: relative; display: block; overflow: hidden; background: var(--bg2); }
+.b-tile img { width: 100%; height: 100%; aspect-ratio: 403 / 450; object-fit: cover; transition: transform .5s, filter .5s; }
+.b-tile:hover img { transform: scale(1.05); }
+.b-tile.is-verkauft img { filter: grayscale(1) brightness(.6); }
+.b-cap { position: absolute; inset: auto 0 0 0; padding: 30px 12px 10px; background: linear-gradient(transparent, rgba(0,0,0,.8));
+  display: flex; justify-content: space-between; align-items: end; gap: 8px; font-size: .85rem; }
+.b-cap em { font-family: var(--serif); font-style: normal; font-size: 1.05rem; }
+.b-cap span { color: var(--silver); white-space: nowrap; }
+.b-tile.is-verkauft .b-cap span, .b-tile.is-reserviert .b-cap span { color: var(--violet); text-transform: uppercase; font-size: .7rem; letter-spacing: .1em; }
+
+.b-maker { display: grid; gap: 20px; align-items: center; border-top: 1px solid var(--line); }
+.b-maker img { width: 160px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
+.b-maker blockquote { margin: 0; font-family: var(--serif); font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--silver); }
+.b-maker footer { font-family: var(--sans); font-size: .9rem; margin-top: 10px; }
+.b-maker a { color: var(--violet); }
+@media (min-width: 700px) { .b-maker { grid-template-columns: auto 1fr; gap: 36px; } }
+
+.b-cat-head { padding: 40px 0 20px; max-width: 60ch; }
+.b-cat-head h1 { font-size: clamp(2.4rem, 7vw, 4rem); color: var(--silver); }
+.b-cat-head p:last-child { color: var(--dim); }
+.b-chapter { display: grid; gap: 18px; padding: 30px 0; border-top: 1px solid var(--line); scroll-margin-top: 70px; }
+.b-chapter-side { align-self: start; }
+.b-num { color: var(--violet); font-family: var(--serif); font-size: 1rem; }
+.b-chapter-side h2 { font-size: 1.8rem; margin: 4px 0 8px; }
+.b-chapter-side p { color: var(--dim); margin: 0 0 6px; }
+.b-chapter-side small { color: var(--dim); }
+.b-chapter-list { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 560px) { .b-chapter-list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) {
+  .b-chapter { grid-template-columns: 280px 1fr; gap: 40px; }
+  .b-chapter-side { position: sticky; top: 30px; }
+  .b-chapter-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.b-stage { display: grid; gap: 24px; padding-top: 24px; }
+.b-stage-img { position: relative; background: #141316; display: grid; place-items: center; padding: 16px; }
+.b-stage-img [data-main] { width: 100%; max-width: 520px; aspect-ratio: 403 / 450; object-fit: cover; }
+.b-thumbs { display: flex; gap: 8px; margin-top: 12px; }
+.b-thumbs a { width: 56px; opacity: .45; }
+.b-thumbs a.is-active { opacity: 1; outline: 1px solid var(--violet); outline-offset: 2px; }
+@media (min-width: 1100px) {
+  .b-stage { grid-template-columns: 1.3fr 1fr; gap: 40px; padding-top: 40px; }
+  .b-stage-img { min-height: calc(100vh - 80px); position: sticky; top: 40px; align-content: center; }
+  .b-panel { padding-top: 20px; }
+}
+.b-back { color: var(--dim); font-size: .85rem; }
+.b-back:hover { color: var(--violet); }
+.b-panel h1 { font-size: clamp(2rem, 5vw, 3rem); color: var(--silver); margin-top: 14px; }
+.b-serial { font-family: ui-monospace, Menlo, monospace; color: var(--dim); letter-spacing: .1em; margin: 6px 0 14px; }
+.b-status { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; }
+.b-status i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.b-status.is-verfuegbar { color: #7fc79a; } .b-status.is-reserviert { color: #e0b65c; } .b-status.is-verkauft { color: var(--dim); }
+.b-price { font-family: var(--serif); font-size: 2rem; margin: 16px 0 0; }
+.b-vat { font-size: .78rem; color: var(--dim); margin: 2px 0 0; }
+.b-vat a { text-decoration: underline; }
+.b-desc { color: #c2c2c8; margin: 22px 0; }
+.b-panel dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 26px; }
+.b-panel dl div { border-top: 1px solid var(--line); padding-top: 8px; }
+.b-panel dt { color: var(--dim); font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; }
+.b-panel dd { margin: 2px 0 0; }
+.b-enq { border: 1px solid var(--violet); }
+.b-enq > summary { list-style: none; cursor: pointer; background: var(--violet-d); color: #fff; padding: 14px 18px; text-align: center; letter-spacing: .05em; }
+.b-enq > summary::-webkit-details-marker { display: none; }
+.b-enq[open] > summary { background: transparent; color: var(--violet); }
+.v-b .enq { display: grid; gap: 12px; padding: 18px; }
+.v-b .enq-ref { margin: 0; color: var(--dim); font-size: .9rem; }
+.v-b .enq-field { display: grid; gap: 4px; font-size: .8rem; color: var(--dim); }
+.v-b .enq-field input, .v-b .enq-field textarea { background: var(--bg2); color: var(--text); border: 1px solid var(--line); padding: 10px; width: 100%; }
+.v-b .enq-field input:focus, .v-b .enq-field textarea:focus { outline: 1px solid var(--violet); }
+.v-b .enq-submit { background: var(--violet); color: #111; border: 0; padding: 12px; cursor: pointer; font-weight: 600; }
+.v-b .enq-note { font-size: .75rem; color: var(--dim); margin: 0; }
+.b-sib { display: flex; justify-content: space-between; gap: 12px; margin-top: 26px; font-size: .85rem; color: var(--dim); }
+.b-sib a:hover { color: var(--violet); }
+
+.b-foot { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 24px; color: var(--dim); font-size: .85rem; }
+.b-foot .kessz-logo { width: 56px; color: var(--line); margin-bottom: 10px; }
+.b-foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+@media (min-width: 900px) { .b-foot { display: none; } }

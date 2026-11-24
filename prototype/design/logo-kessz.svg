@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 0 242 149" role="img" aria-label="kessz">
+  <!-- PROTOTYPE — throwaway. Redraw of the wire-and-beads lettering zzz_legacy/public/images/kessz/kessz_3.png. -->
+  <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 8 V139"/>
+    <path d="M18 118 L42 92"/>
+    <path d="M18 116 C40 110 58 118 70 140"/>
+    <path d="M70 140 L121 91 C112 84 90 86 80 102 C72 116 76 136 92 143 C102 147 112 145 118 140"/>
+    <path d="M118 140 C132 136 136 120 140 108 C144 96 150 92 163 92"/>
+    <path d="M153 140 C167 136 171 120 175 108 C179 96 185 92 197 92"/>
+    <path d="M197 92 H245 L193 141 H240"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="17" cy="8" r="6.5"/><circle cx="17" cy="139" r="6.5"/><circle cx="42" cy="92" r="6.5"/>
+    <circle cx="70" cy="140" r="6.5"/><circle cx="118" cy="140" r="6.5"/><circle cx="163" cy="92" r="6.5"/>
+    <circle cx="153" cy="140" r="6.5"/><circle cx="197" cy="92" r="6.5"/><circle cx="240" cy="140" r="6.5"/>
+  </g>
+</svg>

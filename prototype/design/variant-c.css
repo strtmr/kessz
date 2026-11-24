@@ -1,0 +1,114 @@
+/* PROTOTYPE — throwaway. Variant C "Register": typographic catalogue on warm silver paper.
+ * Fonts: system sans + mono (production idea: self-host "Instrument Serif" for headlines, "IBM Plex Mono" for numbers). */
+.v-c {
+  --paper: #efeff1; --ink: #1d1c21; --violet: #5d2f9e; --lav: #dcd0f0; --gray: #6c6d73; --line: #c6c7cc;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans);
+}
+.v-c a { text-decoration: none; }
+.v-c h1, .v-c h2 { margin: 0; font-weight: 500; letter-spacing: -.02em; }
+
+.c-header { display: grid; gap: 12px; padding: 18px 16px; border-bottom: 3px solid var(--ink); }
+.c-logo { display: flex; align-items: center; gap: 12px; color: var(--violet); }
+.c-logo .kessz-logo { width: 72px; height: auto; }
+.c-logo span { font-family: var(--mono); font-size: .72rem; color: var(--gray); text-transform: uppercase; letter-spacing: .12em; }
+.c-nav { display: flex; gap: 18px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; font-weight: 500; }
+.c-nav a:hover, .c-nav a[aria-current] { color: var(--violet); }
+.c-nav sup { font-family: var(--mono); font-size: .65rem; color: var(--gray); margin-right: 2px; }
+@media (min-width: 860px) { .c-header { grid-template-columns: auto 1fr; align-items: center; padding: 22px 40px; } .c-nav { justify-content: flex-end; } }
+
+.c-main { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 860px) { .c-main { padding: 0 40px; } }
+.c-label { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; color: var(--gray); border-bottom: 1px solid var(--ink); padding-bottom: 6px; margin-bottom: 4px !important; }
+
+.c-statement { padding: 48px 0 40px; }
+.c-statement h1 { font-size: clamp(2rem, 6.5vw, 4.4rem); line-height: 1.05; max-width: 18ch; }
+.c-statement mark { background: none; color: var(--violet); box-shadow: inset 0 -.18em 0 var(--lav); }
+
+.c-block { padding: 20px 0 30px; }
+.c-list { display: grid; }
+.c-row { display: grid; grid-template-columns: 56px 1fr auto; grid-template-areas: "img main price" "img main status"; gap: 2px 14px; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--line); }
+.c-row:hover { background: #e6e3ec; }
+.c-row img { grid-area: img; width: 56px; aspect-ratio: 403 / 450; object-fit: cover; }
+.c-idx { display: none; }
+.c-row-main { grid-area: main; display: grid; min-width: 0; }
+.c-row-main b { font-weight: 500; font-size: 1.05rem; }
+.c-row-main small { font-family: var(--mono); font-size: .72rem; color: var(--gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-row-price { grid-area: price; text-align: right; font-family: var(--mono); font-size: .85rem; }
+.c-row-status { grid-area: status; text-align: right; font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+.c-row.is-verfuegbar .c-row-status { color: #2f7a4b; }
+.c-row.is-reserviert .c-row-status { color: #9a6a10; }
+.c-row.is-verkauft { color: var(--gray); }
+.c-row.is-verkauft img { filter: grayscale(1); opacity: .7; }
+@media (min-width: 760px) {
+  .c-row { grid-template-columns: 40px 72px 1fr 130px 150px; grid-template-areas: "idx img main status price"; padding: 12px 8px; }
+  .c-row img { width: 72px; }
+  .c-idx { display: block; grid-area: idx; font-family: var(--mono); color: var(--gray); font-size: .8rem; }
+  .c-sub .c-row { grid-template-columns: 72px 1fr 130px 150px; grid-template-areas: "img main status price"; }
+  .c-row-status { text-align: left; }
+}
+
+.c-split { display: grid; gap: 30px; }
+@media (min-width: 860px) { .c-split { grid-template-columns: 2fr 1fr; gap: 60px; } }
+.c-index { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+.c-index li { border-bottom: 1px solid var(--line); padding: 14px 0; counter-increment: c; }
+.c-index a { display: flex; align-items: baseline; gap: 12px; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; }
+.c-index a::before { content: "0" counter(c); font-family: var(--mono); font-size: .8rem; color: var(--gray); }
+.c-index a:hover { color: var(--violet); }
+.c-index em { font-style: normal; font-family: var(--mono); font-size: .8rem; color: var(--violet); }
+.c-index p { margin: 2px 0 0 28px; color: var(--gray); font-size: .9rem; }
+.c-note { background: var(--violet); color: #fff; padding: 22px; align-self: start; }
+.c-note .c-label { color: var(--lav); border-color: var(--lav); }
+.c-note a { font-weight: 600; }
+
+.c-cat-head { padding: 40px 0 10px; }
+.c-cat-head h1 { font-size: clamp(2.6rem, 9vw, 5.5rem); line-height: 1; }
+.c-cat-head p { color: var(--gray); max-width: 60ch; }
+.c-filter { position: sticky; top: 0; z-index: 2; display: flex; gap: 6px; padding: 12px 0; background: var(--paper); border-bottom: 1px solid var(--ink); }
+.c-filter button { border: 1px solid var(--ink); background: transparent; padding: 6px 14px; cursor: pointer; font-size: .85rem; }
+.c-filter button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+[data-only="verfuegbar"] .c-row:not(.is-verfuegbar) { display: none; }
+.c-sub { scroll-margin-top: 60px; }
+.c-sub-head { display: grid; gap: 4px; padding: 18px 0 10px; border-bottom: 1px solid var(--ink); }
+.c-sub-head h2 { font-size: 1.6rem; }
+.c-sub-head p { margin: 0; color: var(--gray); max-width: 70ch; }
+@media (min-width: 860px) { .c-sub-head { grid-template-columns: 280px 1fr; gap: 30px; align-items: baseline; } }
+
+.c-piece { max-width: 680px; margin: 0 auto; padding: 24px 0; }
+.c-crumbs { font-family: var(--mono); font-size: .75rem; color: var(--gray); }
+.c-crumbs a:hover { color: var(--violet); }
+.c-bigserial { font-family: var(--mono); font-size: clamp(2.4rem, 10vw, 4.2rem); color: var(--violet); margin: 18px 0 0; line-height: 1; letter-spacing: -.03em; }
+.c-piece h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin: 6px 0 20px; }
+.c-photos { display: grid; grid-auto-flow: column; grid-auto-columns: 88%; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; }
+.c-photos img { width: 100%; aspect-ratio: 403 / 450; object-fit: cover; scroll-snap-align: start; }
+.c-photos:has(img:only-child) { grid-auto-columns: 100%; }
+.c-hint { font-family: var(--mono); font-size: .7rem; color: var(--gray); text-align: center; }
+.c-specs { display: grid; grid-template-columns: 1fr 1fr; margin: 24px 0 0; border-top: 3px solid var(--ink); }
+.c-specs div { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.c-specs dt { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--gray); }
+.c-specs dd { margin: 2px 0 0; font-size: 1.05rem; }
+.c-st.is-verfuegbar { color: #2f7a4b; } .c-st.is-reserviert { color: #9a6a10; } .c-st.is-verkauft { color: var(--gray); }
+.c-vat { font-size: .78rem; color: var(--gray); margin: 6px 0 0; }
+.c-vat a { text-decoration: underline; }
+.c-desc { font-size: 1.1rem; margin: 24px 0; }
+.c-enq { margin: 30px 0; }
+.v-c .enq { display: grid; gap: 12px; padding-top: 12px; }
+.v-c .enq-ref { margin: 0; font-family: var(--mono); font-size: .8rem; }
+.v-c .enq-field { display: grid; gap: 2px; font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gray); }
+.v-c .enq-field input, .v-c .enq-field textarea { border: 0; border-bottom: 1px solid var(--ink); background: transparent; padding: 8px 0; font-family: var(--sans); font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--ink); width: 100%; }
+.v-c .enq-field input:focus, .v-c .enq-field textarea:focus { outline: none; border-bottom: 2px solid var(--violet); }
+.v-c .enq-submit { justify-self: stretch; background: var(--violet); color: #fff; border: 0; padding: 14px; cursor: pointer; font-weight: 600; }
+.v-c .enq-note { font-size: .75rem; color: var(--gray); margin: 0; }
+.c-sib { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 3px solid var(--ink); padding-top: 12px; }
+.c-sib a { display: grid; font-size: .9rem; }
+.c-sib a:last-child { text-align: right; }
+.c-sib small { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; color: var(--gray); }
+.c-sib a:hover { color: var(--violet); }
+
+.c-footer { display: grid; gap: 16px; margin-top: 40px; padding: 28px 16px; background: var(--ink); color: var(--line); }
+.c-footer .kessz-logo { width: 64px; color: var(--lav); }
+.c-footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; }
+.c-footer a:hover { color: #fff; }
+@media (min-width: 860px) { .c-footer { grid-template-columns: auto 1fr; padding: 32px 40px; align-items: center; } .c-footer nav { justify-content: flex-end; } }
